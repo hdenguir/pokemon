@@ -13,14 +13,26 @@
   margin: auto;
 }
 
+.modal {
+  display: block !important;
+}
+
 .container-flex {
   display: flex;
   flex-wrap: wrap;
 }
-.container-flex .card-body {
+.container-flex > div {
   flex-basis: 25%;
   min-width: 25%;
 }
-.container-flex .card-body a {
+.container-flex .card-body button {
   display: block;
+}
+
+.list-group-item {
+  padding: 0.2rem 1.25rem !important;
+}
+
+.page-link {
+  cursor: pointer;
 }

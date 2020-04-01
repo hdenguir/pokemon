@@ -6,7 +6,7 @@ export const Abilities = ({ abilities }) => (
       Abilities
     </button>
     {abilities.map(({ ability, slot }) => (
-      <a
+      <button
         href={ability.url}
         target="_blank"
         rel="noopener noreferrer"
@@ -14,7 +14,7 @@ export const Abilities = ({ abilities }) => (
         key={ability.name}
       >
         Name: {ability.name} - Slot: {slot}
-      </a>
+      </button>
     ))}
   </div>
 );

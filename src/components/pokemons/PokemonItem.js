@@ -1,12 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-export const PokemonItem = ({ pokemon: { name, sprites } }) => (
+export const PokemonItem = ({
+  pokemon: { name, sprites },
+  handleShowModal
+}) => (
   <div className="card-body">
     <h5 className="card-title">
-      <Link className="btn btn-outline-info" to={`/pokemon/${name}`}>
+      <button
+        onClick={(e) => handleShowModal(e, name)}
+        className="btn btn-outline-info btn-block"
+      >
         {name}
-      </Link>
+      </button>
     </h5>
   </div>
 );

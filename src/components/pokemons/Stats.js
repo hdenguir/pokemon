@@ -6,7 +6,7 @@ export const Stats = ({ stats }) => (
       Stats
     </button>
     {stats.map(({ stat, effort }) => (
-      <a
+      <button
         href={stat.url}
         target="_blank"
         rel="noopener noreferrer"
@@ -15,7 +15,7 @@ export const Stats = ({ stats }) => (
       >
         Name: {stat.name} - Base Stat: {stat.base_stat} - Effort:
         {effort}
-      </a>
+      </button>
     ))}
   </div>
 );

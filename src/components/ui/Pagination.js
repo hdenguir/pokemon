@@ -20,7 +20,11 @@ const Pagination = ({ count, limit, onPageChange, currentPage }) => {
               currentPage === page ? 'active' : ''
             }`}
           >
-            <Link to={`/page/${page}`} className="page-link">
+            <Link
+              to={`/page/${page}`}
+              className="page-link"
+              onClick={() => onPageChange(page)}
+            >
               {page}
             </Link>
           </li>

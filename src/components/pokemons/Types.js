@@ -6,7 +6,7 @@ const Types = ({ types }) => (
       Types
     </button>
     {types.map(({ type, slot }) => (
-      <a
+      <button
         href={type.url}
         target="_blank"
         rel="noopener noreferrer"
@@ -14,7 +14,7 @@ const Types = ({ types }) => (
         key={type.name}
       >
         Name: {type.name} - Slot: {slot}
-      </a>
+      </button>
     ))}
   </div>
 );
