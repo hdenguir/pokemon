@@ -43,7 +43,6 @@ class Home extends React.Component {
     this.setState({ offset: newOffset }, () => {
       this.props.fetchPokemons(offset, limit);
     });
-    console.log(data, newOffset);
   };
 
   handleShowModal = (e, pokemonName) => {
