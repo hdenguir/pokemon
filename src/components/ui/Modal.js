@@ -17,7 +17,7 @@ export const Modal = ({
   if (loading) return <Spinner />;
 
   if (!show) return null;
-  const { id, name, sprites, types, abilities, stats } = pokemon;
+  const { name, sprites, types, abilities, stats } = pokemon;
   return (
     <div className="modal-open">
       <div className="modal-backdrop fade show" />
@@ -30,7 +30,7 @@ export const Modal = ({
               </h5>{' '}
               <LikeButton
                 onToggleLikes={onToggleLikes}
-                pokemonId={id}
+                name={name}
                 likes={likes}
               />
               <button

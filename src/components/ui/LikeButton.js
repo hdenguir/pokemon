@@ -1,13 +1,11 @@
 import React from 'react';
 
-export const LikeButton = ({ onToggleLikes, likes, pokemonId }) => (
+export const LikeButton = ({ onToggleLikes, likes, name }) => (
   <button
     style={{ marginLeft: 'auto' }}
-    onClick={() => onToggleLikes(pokemonId)}
+    onClick={() => onToggleLikes(name)}
     className={`btn  btn-sm ${
-      likes.indexOf(pokemonId) > -1
-        ? 'btn-primary'
-        : 'btn-outline-primary'
+      likes.indexOf(name) > -1 ? 'btn-primary' : 'btn-outline-primary'
     }`}
   >
     Like

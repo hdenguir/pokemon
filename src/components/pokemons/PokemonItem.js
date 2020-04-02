@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const PokemonItem = ({
-  pokemon: { name, sprites },
+  pokemon: { name },
   handleShowModal
 }) => (
   <div className="card-body">
