@@ -20,6 +20,7 @@ import {
 import PokemonList from '../pokemons/PokemonList';
 
 import Modal from '../ui/Modal';
+import Pagination from '../ui/Pagination';
 
 window.React = React;
 class Home extends React.Component {
@@ -29,12 +30,13 @@ class Home extends React.Component {
     this.state = {
       data: [],
       offset: 0,
-      limit: 20,
+      currentPage: 1,
+      limit: 50,
       show: false
     };
   }
   componentDidMount() {
-    this.props.fetchPokemons(0, 20);
+    this.props.fetchPokemons(this.state.offset, this.state.limit);
   }
 
   handlePageClick = (data) => {
@@ -42,6 +44,17 @@ class Home extends React.Component {
     let newOffset = Math.ceil(data.selected * limit);
     this.setState({ offset: newOffset }, () => {
       this.props.fetchPokemons(offset, limit);
+    });
+  };
+
+  handlePageDirection = (direction) => {
+    const { limit, currentPage } = this.state;
+    let page = direction === 1 ? currentPage + 1 : currentPage - 1;
+    this.setState({ currentPage: page });
+
+    let newOffset = Math.ceil(currentPage * limit);
+    this.setState({ offset: newOffset }, () => {
+      this.props.fetchPokemons(newOffset, limit);
     });
   };
 
@@ -67,24 +80,35 @@ class Home extends React.Component {
       toggleLikes
     } = this.props;
 
+    const { limit, show, currentPage } = this.state;
+
     if (error) return <h1 className="text-center">{error}</h1>;
 
     return (
       <>
         {results.length > 0 ? (
           <>
+            <Pagination
+              limit={limit}
+              currentPage={currentPage}
+              count={this.props.count}
+              handlePageDirection={this.handlePageDirection}
+            />
             <PokemonList
               results={results}
               handleShowModal={this.handleShowModal}
             />
             <Modal
-              show={this.state.show}
+              show={show}
               likes={likes}
               pokemon={pokemon}
               handleHideModal={this.handleHideModal}
               onToggleLikes={toggleLikes}
               loading={loading}
             />
+
+            <hr />
+
             <ReactPaginate
               previousLabel={'Précédent'}
               nextLabel={'Suivant'}
